@@ -1,0 +1,25 @@
+{
+  "name": "niennasa",
+  "version": "1.0.0",
+  "description": "nasa api",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Niennis/nasa.git"
+  },
+  "keywords": [
+    "nasa"
+  ],
+  "author": "estefania osses",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Niennis/nasa/issues"
+  },
+  "homepage": "https://github.com/Niennis/nasa#readme",
+  "dependencies": {
+    "bootstrap": "^4.0.0-alpha.6"
+  }
+}

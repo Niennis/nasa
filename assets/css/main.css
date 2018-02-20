@@ -1,17 +1,11 @@
-
+/* 
 html, body {
   font-family: 'Roboto', 'Helvetica', sans-serif;
 }
 main, #messages-card {
   height: 100%;
-  width: 100%;
   padding-bottom: 0;
 }
-
-.jaja{
-  width: 00% !important;
-}
-
 #messages-card-container {
   height: calc(100% - 150px);
   padding-bottom: 0;
@@ -187,4 +181,22 @@ main, #messages-card {
 .mdl-button .material-icons {
   top: -1px;
   margin-right: 5px;
+} */
+
+
+body {
+  background-color: teal;
+}
+
+#user-pic{
+  display: inline-block;
+  width: 40px;
+  height: 40px;;
+  background-size: cover;
+  border-radius: 50%;
+}
+
+.signInContainer{
+  width: 50vw;
+  margin-top: 20vh;
 }

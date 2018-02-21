@@ -7,6 +7,7 @@
 .imgSearch{
   width: 100%;
 }
+
 body {
   background-image: url(../../assets/img/nasa-bg.jpg);
   background-repeat: no-repeat;
@@ -17,6 +18,17 @@ body {
   padding-top: 10vh;
 }
 
+/* ------------------------------ INICIO NAV ----*/
+.navbar{
+  background-color: #1da7a7;
+}
+.navbar-light .navbar-brand, li a{
+  color: white !important;
+}
+li a:hover{
+  background-color: teal;
+  border-radius: 0.5vh;
+}
 #user-pic{
   display: inline-block;
   width: 40px;
@@ -29,42 +41,47 @@ body {
   width: 70vw;
   margin-top: 20vh;
 }
-/* --------------------------------- HEADER ----*/
+
+/* ----------------------------------FIN NAV ----*/
+/* ----------------------------INICIO HEADER ----*/
 header{
   height: 100%;
 }
 .card{
-  border: #240950;
-  background-color: rgba(255, 255, 255, 0.5);
+  border: #301472;
+  background-color: rgba(255, 255, 255, 0.4);
+  color: white;
 }
 .card-body{
   padding: 8vh 0;
 }
 .card-header, .card-footer{
-  background-color: #240950;
+  background-color: #301472;
 }
-/* --------------------------------- HEADER ----*/
+/* ----------------------------- FIN HEADER ----*/
 
+/* -----------------------------INICIO NEWS ----*/
 #newsContainer{
-  color: salmon;
+  color: #1da7a7;
   height: 100vh;
   padding-top: 10vh;
 }
 
 .newDiv{
   margin: 10vh 0;  
-  border: 1px solid teal;
-  background-color: rgba(255, 255, 255, 0.4);
+  border: 1px solid #1da7a7;
+  border-radius: 0.7vh;
+  background-color: rgba(255, 255, 255, 1);
 }
 
 .imgNews{
   width: 100%;
-  margin-top: 1vh;
+  margin: 5vh 0;
 }
 
 .btn {
-  background-color: teal;
-  border: 0.1vh solid teal;
+  background-color: #1da7a7;
+  border: 0.1vh solid #1da7a7;
   margin: 0 1vh;
 }
 
@@ -79,3 +96,15 @@ header{
   border-radius: 0.3vh;
   border: 0.1vh solid grey;
 }
+
+.newDiv a{
+  color: rgb(92, 0, 92);
+}
+.newDiv p, h5, h6{
+  color: teal;
+}
+.twitter iframe{
+  margin-top: 10vh !important;
+}
+
+/* ------------------------------- FIN NEWS ----*/

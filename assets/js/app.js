@@ -222,7 +222,7 @@ function getNews() {
         console.log(infoImg);
         if (infoImg === null || infoImg.indexOf('https') < 0) {
           let newDiv = `<div class="row newDiv">
-                        <div class="col-lg-12">
+                        <div class="col-lg-18">
                           <h3 class="titleNews"><a href="${info.url}" class="urlNews">${info.title}</a></h3>
                           <h5 class="descriptioNres">${info.description}</h5>
                           <h6 class="dateNews">Date: ${info.publishedAt}.</h6>        

@@ -1,5 +1,10 @@
 'use strict';
 
+window.onload = function() {
+  window.nasaConnection = new nasaConnection();
+  $('#askNews').click(getNews);  
+};
+
 // -------------------------------Initializes nasaConnection.
 function nasaConnection() {
   this.checkSetup();
@@ -63,7 +68,7 @@ nasaConnection.prototype.onAuthStateChanged = function(user) {
 
     // Hide sign-in button.
     this.signInContainer.setAttribute('hidden', 'true');
-    this.dailyImgContainer.removeAttribute('hidden');
+    // this.dailyImgContainer.removeAttribute('hidden');
     this.newsContainer.removeAttribute('hidden');
   } else { // User is signed out!
     // Hide user's profile and sign-out button.
@@ -73,7 +78,7 @@ nasaConnection.prototype.onAuthStateChanged = function(user) {
 
     // Show sign-in button.
     this.signInContainer.removeAttribute('hidden');
-    this.dailyImgContainer.setAttribute('hidden', 'true');
+    // this.dailyImgContainer.setAttribute('hidden', 'true');
     this.newsContainer.setAttribute('hidden', 'true');
   }
 };
@@ -101,10 +106,6 @@ nasaConnection.prototype.checkSetup = function() {
       'Make sure you go through the codelab setup instructions and make ' +
       'sure you are running the codelab using `firebase serve`');
   }
-};
-
-window.onload = function() {
-  window.nasaConnection = new nasaConnection();
 };
 
 // buscar por https://nasa-project-nienna.firebaseapp.com
@@ -146,11 +147,12 @@ btnSearchPlanet.addEventListener('click', showApiNAsa);
 
 // ------------------------------------------- NEWS API------
 
-function getNews() {
+function loadNews() {
   let searchWord = document.getElementById('searchWord').value;
   let sortBy = document.getElementById('sortBy').value;
   let language = document.getElementById('language').value;
   let news = document.getElementById('news');
+  let askNews = document.getElementById('askNews');
 
   // fetch('https://newsapi.org/v2/top-headlines?apiKey=19214f11097341d1ad450bb2ad214ce1&country=us&category=science&q=nasa')
   fetch(`https://newsapi.org/v2/everything?apiKey=19214f11097341d1ad450bb2ad214ce1&q=nasa%20science&language=${language}&sortBy${sortBy}`)
@@ -162,54 +164,90 @@ function getNews() {
       console.log(data);
       console.log(data.articles[1]);
       for (let i = 0; i < data.articles.length; i++) {
-      // Let's make some HTML!
-        
-        let newDiv = document.createElement('div');
-        newDiv.setAttribute('class', 'newDiv');
-
-        let newImg = document.createElement('img');
-        newImg.setAttribute('class', 'imgNews img-fluid');
-        newImg.setAttribute('src', data.articles[i].urlToImage);
-
-        let newTitle = document.createElement('h3');
-        newTitle.setAttribute('class', 'titleNews');
-        let newHref = document.createElement('a');
-        newHref.setAttribute('class', 'urlNews');
-        newHref.setAttribute('href', data.articles[i].url);
-        newTitle.appendChild(newHref);
-
-        let newDescription = document.createElement('p');
-        newDescription.setAttribute('class', 'bodyNews');
-        let newText = document.createTextNode(data.articles[i].description);
-        newDescription.appendChild(newText);
-
-        let newDate = document.createElement('h5');
-        newDate.setAttribute('class', 'dates');
-        let textDate = document.createTextNode('Date: ' + data.articles[i].publishedAt);
-        newDate.appendChild(textDate);
-
-        let newSource = document.createElement('h5');
-        newSource.setAttribute('class', 'sourceNews');
-        let textSource = document.createTextNode(data.articles[i].source.name);
-        newSource.appendChild(textSource);
-
-        newDiv.appendChild(newImg);
-        newDiv.appendChild(newTitle);
-        newDiv.appendChild(newDescription);
-        newDiv.appendChild(newDate);
-        // newDiv.appendChild(newSource);
-
-        news.append(newDiv);
+        let info = data.articles[i];
+        let infoImg = info.urlToImage;
+        console.log(infoImg);
+        if (info.urlToImage === null || infoImg.indexOf('https') < 0) {
+          let newDiv = `<div class="row newDiv">
+                        <div class="col-lg-12">
+                          <h3 class="titleNews"><a href="${info.url}" class="urlNews">${info.title}</a></h3>
+                          <h5 class="descriptioNres">${info.description}</h5>
+                          <h6 class="dateNews">Date: ${info.publishedAt}.</h6>        
+                          <h6 class="sourceNews"> Publicado en: ${info.source.name}</h6>
+                        </div>
+                      </div>`;
+          $('#news').append(newDiv);
+        } else {
+          let newDiv = `<div class="row newDiv">
+                        <div class="col-lg-12 text-center">
+                        <img src="${info.urlToImage}" class="imgNews rounded mx-auto d-block img-fluid" alt="">
+                          <h3 class="titleNews"><a href="${info.url}" class="urlNews">${info.title}</a></h3>
+                          <h5 class="descriptioNres">${info.description}</h5>
+                          <h6 class="dateNews">Date: ${info.publishedAt}.</h6>        
+                          <h6 class="sourceNews"> Publicado en: ${info.source.name}</h6>
+                        </div>
+                      </div>`;
+          $('#news').append(newDiv);
+          ;
+        }  
       };
     })
     .catch(function(error) {
-      if (searchWord === null || sortBy === null || language === null) {
-        console.log('Something not found');
-      }
+      console.log('Something not found');
     });
 }
+loadNews();
 
-getNews();
+function getNews() {
+  console.log('whaaaaat');
+  $('#news').empty();
+  let searchWord = document.getElementById('searchWord').value;
+  let sortBy = document.getElementById('sortBy').value;
+  let language = document.getElementById('language').value;
+  let news = document.getElementById('news');
+  let askNews = document.getElementById('askNews');
+
+  // fetch('https://newsapi.org/v2/top-headlines?apiKey=19214f11097341d1ad450bb2ad214ce1&country=us&category=science&q=nasa')
+  fetch(`https://newsapi.org/v2/everything?apiKey=19214f11097341d1ad450bb2ad214ce1&q=nasa%20science%20${searchWord}&language=${language}&sortBy${sortBy}`)
+    .then(function(response) {
+      // Turns the the JSON into a JS object
+      return response.json();
+    })
+    .then(function(data) {
+      console.log(data);
+      console.log(data.articles[1]);
+      for (let i = 0; i < data.articles.length; i++) {
+        let info = data.articles[i];
+        let infoImg = info.urlToImage;
+        console.log(infoImg);
+        if (infoImg === null || infoImg.indexOf('https') < 0) {
+          let newDiv = `<div class="row newDiv">
+                        <div class="col-lg-12">
+                          <h3 class="titleNews"><a href="${info.url}" class="urlNews">${info.title}</a></h3>
+                          <h5 class="descriptioNres">${info.description}</h5>
+                          <h6 class="dateNews">Date: ${info.publishedAt}.</h6>        
+                          <h6 class="sourceNews"> Publicado en: ${info.source.name}</h6>
+                        </div>
+                      </div>`;
+          $('#news').append(newDiv);
+        } else {
+          let newDiv = `<div class="row newDiv">
+                        <div class="col-lg-12 text-center">
+                        <img src="${info.urlToImage}" class="imgNews rounded mx-auto d-block img-fluid" alt="">
+                          <h3 class="titleNews"><a href="${info.url}" class="urlNews">${info.title}</a></h3>
+                          <h5 class="descriptioNres">${info.description}</h5>
+                          <h6 class="dateNews">Date: ${info.publishedAt}.</h6>        
+                          <h6 class="sourceNews"> Publicado en: ${info.source.name}</h6>
+                        </div>
+                      </div>`;
+          $('#news').append(newDiv);
+          ;
+        }  
+      };
+    })
+    .catch(function(error) {
+      console.log('Something not found');
+    }); 
+};
 
 // -----------------------------------------------FIN NEWS API
-

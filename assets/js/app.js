@@ -15,10 +15,12 @@ function nasaConnection() {
 
   this.signOutButton.addEventListener('click', this.signOut.bind(this));
   this.signInButton.addEventListener('click', this.signIn.bind(this));
+
   this.initFirebase();
 }
 
 // Sets up shortcuts to Firebase features and initiate firebase auth.
+
 nasaConnection.prototype.initFirebase = function() {
   // Shortcuts to Firebase SDK features.
   this.auth = firebase.auth();
@@ -28,7 +30,7 @@ nasaConnection.prototype.initFirebase = function() {
   this.auth.onAuthStateChanged(this.onAuthStateChanged.bind(this));
 };
 
-// Signs-in Friendly Chat.
+
 nasaConnection.prototype.signIn = function() {
   // Sign in Firebase using popup auth and Google as the identity provider.
   var provider = new firebase.auth.GoogleAuthProvider();
@@ -36,12 +38,14 @@ nasaConnection.prototype.signIn = function() {
 };
 
 // Signs-out of Friendly Chat.
+
 nasaConnection.prototype.signOut = function() {
   // Sign out of Firebase.
   this.auth.signOut();
 };
 
 // Triggers when the auth state change for instance when the user signs-in or signs-out.
+
 nasaConnection.prototype.onAuthStateChanged = function(user) {
   if (user) { // User is signed in!
     // Get profile pic and user's name from the Firebase user object.
@@ -89,18 +93,56 @@ nasaConnection.prototype.checkSignedInWithMessage = function() {
   return false;
 };
 
+
 // Checks that the Firebase SDK has been correctly setup and configured.
 nasaConnection.prototype.checkSetup = function() {
   if (!window.firebase || !(firebase.app instanceof Function) || !firebase.app().options) {
     window.alert('You have not configured and imported the Firebase SDK. ' +
-        'Make sure you go through the codelab setup instructions and make ' +
-        'sure you are running the codelab using `firebase serve`');
+      'Make sure you go through the codelab setup instructions and make ' +
+      'sure you are running the codelab using `firebase serve`');
   }
 };
 
 window.onload = function() {
   window.nasaConnection = new nasaConnection();
 };
+
+// buscar por https://nasa-project-nienna.firebaseapp.com
+// url (requerida), opciones (opcional) SBmiPgE8WXMZztwJFFZhKpAb5CyIKhGr8kUTD5zz   https://api.nasa.gov/EPIC/api/natural/images?api_key=DEMO_KEY 
+
+let btnSearchPlanet = document.getElementById('btnSearchPlanet');
+
+function showApiNAsa() {
+  $('#bla').empty();
+  let searchPlanet = document.getElementById('searchPlanet').value;
+  fetch(`https://images-api.nasa.gov/search?q=${searchPlanet}`, {
+    method: 'get'
+  }).then(function (response) {
+    response.json()
+      .then(function (response) {
+        console.log(response);
+        let images = response.collection.items;
+        let descript = response.collection.items;
+        images.filter(element => {
+          let imageHref = element.links[0].href;
+          let description = element.data[0].description_508;
+          $('#showTheImages').append(`<div class="col-lg-4" id="bla">
+          <div class="thumbnail" >
+            <a href="#">
+            <img src="${imageHref}" alt="planets" class="imgSearch">
+            <div class="caption">
+            <p>${description}</p>
+            </div>
+            </a>
+          </div>
+          </div>`);
+        });
+      });
+  }).catch(function (err) {
+    // Error :(
+  });//https://api.nasa.gov/planetary/earth/assets?lon=100.75&lat=1.5&begin=2014-02-01&api_key=DEMO_KEY
+}//https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=DEMO_KEY
+btnSearchPlanet.addEventListener('click', showApiNAsa);
 
 // ------------------------------------------- NEWS API------
 
@@ -170,3 +212,4 @@ function getNews() {
 getNews();
 
 // -----------------------------------------------FIN NEWS API
+

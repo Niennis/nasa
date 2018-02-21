@@ -212,3 +212,4 @@ function getNews() {
 getNews();
 
 // -----------------------------------------------FIN NEWS API
+

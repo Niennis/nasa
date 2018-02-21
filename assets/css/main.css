@@ -182,10 +182,18 @@ main, #messages-card {
   top: -1px;
   margin-right: 5px;
 } */
-
+* {
+  padding: 0;
+  margin: 0;
+}
 
 body {
-  background-color: teal;
+  background-image: url(../../assets/img/nasa-bg.jpg);
+  background-repeat: no-repeat;
+  background-position-y: bottom;
+  background-position-x: center;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 #user-pic{
@@ -199,4 +207,19 @@ body {
 .signInContainer{
   width: 50vw;
   margin-top: 20vh;
+}
+
+#dailyImgContainer{
+  color: white;
+  height: 100%;
+}
+
+#newsContainer{
+  color: salmon;
+  height: 100vh;
+}
+
+.newDiv{
+  margin: 10vh 0;  
+  border: 1px solid salmon;
 }

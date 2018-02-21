@@ -9,7 +9,10 @@ function nasaConnection() {
   this.signOutButton = document.getElementById('sign-out');
   this.signInSnackbar = document.getElementById('must-signin');
   this.signInContainer = document.getElementById('signInContainer');
-  this.holi = document.getElementById('holi');
+  this.dailyImgContainer = document.getElementById('dailyImgContainer');
+  
+  this.newsContainer = document.getElementById('newsContainer');
+
   this.signOutButton.addEventListener('click', this.signOut.bind(this));
   this.signInButton.addEventListener('click', this.signIn.bind(this));
   this.initFirebase();
@@ -56,8 +59,8 @@ nasaConnection.prototype.onAuthStateChanged = function(user) {
 
     // Hide sign-in button.
     this.signInContainer.setAttribute('hidden', 'true');
-    this.holi.removeAttribute('hidden');
-    
+    this.dailyImgContainer.removeAttribute('hidden');
+    this.newsContainer.removeAttribute('hidden');
   } else { // User is signed out!
     // Hide user's profile and sign-out button.
     this.userName.setAttribute('hidden', 'true');
@@ -66,6 +69,8 @@ nasaConnection.prototype.onAuthStateChanged = function(user) {
 
     // Show sign-in button.
     this.signInContainer.removeAttribute('hidden');
+    this.dailyImgContainer.setAttribute('hidden', 'true');
+    this.newsContainer.setAttribute('hidden', 'true');
   }
 };
 
@@ -97,5 +102,71 @@ window.onload = function() {
   window.nasaConnection = new nasaConnection();
 };
 
-// -------------------------------------------------
+// ------------------------------------------- NEWS API------
 
+function getNews() {
+  let searchWord = document.getElementById('searchWord').value;
+  let sortBy = document.getElementById('sortBy').value;
+  let language = document.getElementById('language').value;
+  let news = document.getElementById('news');
+
+  // fetch('https://newsapi.org/v2/top-headlines?apiKey=19214f11097341d1ad450bb2ad214ce1&country=us&category=science&q=nasa')
+  fetch(`https://newsapi.org/v2/everything?apiKey=19214f11097341d1ad450bb2ad214ce1&q=nasa%20science&language=${language}&sortBy${sortBy}`)
+    .then(function(response) {
+      // Turns the the JSON into a JS object
+      return response.json();
+    })
+    .then(function(data) {
+      console.log(data);
+      console.log(data.articles[1]);
+      for (let i = 0; i < data.articles.length; i++) {
+      // Let's make some HTML!
+        
+        let newDiv = document.createElement('div');
+        newDiv.setAttribute('class', 'newDiv');
+
+        let newImg = document.createElement('img');
+        newImg.setAttribute('class', 'imgNews img-fluid');
+        newImg.setAttribute('src', data.articles[i].urlToImage);
+
+        let newTitle = document.createElement('h3');
+        newTitle.setAttribute('class', 'titleNews');
+        let newHref = document.createElement('a');
+        newHref.setAttribute('class', 'urlNews');
+        newHref.setAttribute('href', data.articles[i].url);
+        newTitle.appendChild(newHref);
+
+        let newDescription = document.createElement('p');
+        newDescription.setAttribute('class', 'bodyNews');
+        let newText = document.createTextNode(data.articles[i].description);
+        newDescription.appendChild(newText);
+
+        let newDate = document.createElement('h5');
+        newDate.setAttribute('class', 'dates');
+        let textDate = document.createTextNode('Date: ' + data.articles[i].publishedAt);
+        newDate.appendChild(textDate);
+
+        let newSource = document.createElement('h5');
+        newSource.setAttribute('class', 'sourceNews');
+        let textSource = document.createTextNode(data.articles[i].source.name);
+        newSource.appendChild(textSource);
+
+        newDiv.appendChild(newImg);
+        newDiv.appendChild(newTitle);
+        newDiv.appendChild(newDescription);
+        newDiv.appendChild(newDate);
+        // newDiv.appendChild(newSource);
+
+        news.append(newDiv);
+      };
+    })
+    .catch(function(error) {
+      if (searchWord === null || sortBy === null || language === null) {
+        console.log('Something not found');
+      }
+    });
+}
+
+getNews();
+
+// -----------------------------------------------FIN NEWS API

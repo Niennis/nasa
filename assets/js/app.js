@@ -14,7 +14,7 @@ function nasaConnection() {
   this.signOutButton = document.getElementById('sign-out');
   this.signInSnackbar = document.getElementById('must-signin');
   this.signInContainer = document.getElementById('signInContainer');
-  this.dailyImgContainer = document.getElementById('dailyImgContainer');
+  this.showTheImages = document.getElementById('showTheImages');
   
   this.newsContainer = document.getElementById('newsContainer');
 
@@ -68,9 +68,9 @@ nasaConnection.prototype.onAuthStateChanged = function(user) {
 
     // Hide sign-in button.
     this.signInContainer.setAttribute('hidden', 'true');
-    // this.dailyImgContainer.removeAttribute('hidden');
-    this.newsContainer.removeAttribute('hidden');
-  } else { // User is signed out!
+    // this.newsContainer.removeAttribute('hidden');
+    this.showTheImages.removeAttribute('hidden');
+  } else {// User is signed out!
     // Hide user's profile and sign-out button.
     this.userName.setAttribute('hidden', 'true');
     this.userPic.setAttribute('hidden', 'true');
@@ -78,7 +78,7 @@ nasaConnection.prototype.onAuthStateChanged = function(user) {
 
     // Show sign-in button.
     this.signInContainer.removeAttribute('hidden');
-    // this.dailyImgContainer.setAttribute('hidden', 'true');
+    this.showTheImages.setAttribute('hidden', 'true');
     this.newsContainer.setAttribute('hidden', 'true');
   }
 };
@@ -114,7 +114,8 @@ nasaConnection.prototype.checkSetup = function() {
 let btnSearchPlanet = document.getElementById('btnSearchPlanet');
 
 function showApiNAsa() {
-  $('#images').empty();
+  $('#bla').empty();
+  
   let searchPlanet = document.getElementById('searchPlanet').value;
   fetch(`https://images-api.nasa.gov/search?q=${searchPlanet}`, {
     method: 'get'
@@ -127,15 +128,15 @@ function showApiNAsa() {
         images.filter(element => {
           let imageHref = element.links[0].href;
           let description = element.data[0].description_508;
-          $('#images').append(`<div class="col col-lg-4" >
-          <div class="img-thumbnail" >
+          $('#showTheImages').append(`<div class="col-lg-4" id="bla">
+          <div class="thumbnail" >
             <a href="#">
             <img src="${imageHref}" alt="planets" class="imgSearch">
             <div class="caption">
             <p>${description}</p>
             </div>
             </a>
-            </div>
+          </div>
           </div>`);
         });
       });
@@ -146,8 +147,10 @@ function showApiNAsa() {
 btnSearchPlanet.addEventListener('click', showApiNAsa);
 
 // ------------------------------------------- NEWS API------
+let toNews = document.getElementById('toNews');
 
 function loadNews() {
+  $('#news').empty();
   let searchWord = document.getElementById('searchWord').value;
   let sortBy = document.getElementById('sortBy').value;
   let language = document.getElementById('language').value;
@@ -196,10 +199,17 @@ function loadNews() {
       console.log('Something not found');
     });
 }
-loadNews();
+
+//  FUNCION PARA CARGAR NOTICIAS DESDE LA NAVBAR 
+
+$('#toNews').click(function() {
+  let newsContainer = document.getElementById('newsContainer');
+  newsContainer.removeAttribute('hidden');  
+  loadNews();
+});
+
 
 function getNews() {
-  console.log('whaaaaat');
   $('#news').empty();
   let searchWord = document.getElementById('searchWord').value;
   let sortBy = document.getElementById('sortBy').value;
@@ -222,7 +232,7 @@ function getNews() {
         console.log(infoImg);
         if (infoImg === null || infoImg.indexOf('https') < 0) {
           let newDiv = `<div class="row newDiv">
-                        <div class="col-lg-18">
+                        <div class="col-lg-12">
                           <h3 class="titleNews"><a href="${info.url}" class="urlNews">${info.title}</a></h3>
                           <h5 class="descriptioNres">${info.description}</h5>
                           <h6 class="dateNews">Date: ${info.publishedAt}.</h6>        

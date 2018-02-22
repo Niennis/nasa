@@ -22,11 +22,14 @@ body {
 .navbar{
   background-color: #1da7a7;
 }
+.navbar-light .navbar-brand{
+  padding: 1vh;
+}
 .navbar-light .navbar-brand, li a{
   color: white !important;
 }
-li a:hover{
-  background-color: teal;
+.navbar-light .navbar-brand:hover, li a:hover{
+  background-color: #301472;
   border-radius: 0.5vh;
 }
 #user-pic{
@@ -36,10 +39,18 @@ li a:hover{
   background-size: cover;
   border-radius: 50%;
 }
-
+#user-name{
+  padding: 1vh;
+}
 .signInContainer{
   width: 70vw;
   margin-top: 20vh;
+}
+.btn-primary{
+  color: white;
+}
+.btn-primary:hover{
+  background-color: #301472;
 }
 
 /* ----------------------------------FIN NAV ----*/
@@ -66,42 +77,46 @@ header{
   height: 100vh;
   padding-top: 10vh;
 }
-
 .newDiv{
   margin: 10vh 0;  
+  padding: 5vh;
   border: 1px solid #1da7a7;
   border-radius: 0.7vh;
   background-color: rgba(255, 255, 255, 1);
 }
-
+.newDiv a{
+  color: #1da7a7;
+}
+.newDiv a:hover{
+  color: #301472;
+}
+.newDiv h3, h5, h6{
+  color: black;
+}
+.newDiv h5{
+  font-size: 16px;
+}
+.newDiv h6{
+  font-size: 14px;
+}
 .imgNews{
   width: 100%;
   margin: 5vh 0;
 }
-
 .btn {
   background-color: #1da7a7;
   border: 0.1vh solid #1da7a7;
   margin: 0 1vh;
 }
-
 .askNav{
   padding: 1vh;
   background-color: white;
   border-radius: 0.3vh;
 }
-
 .inputWord{
   height: 35px;
   border-radius: 0.3vh;
   border: 0.1vh solid grey;
-}
-
-.newDiv a{
-  color: rgb(92, 0, 92);
-}
-.newDiv p, h5, h6{
-  color: teal;
 }
 .twitter iframe{
   margin-top: 10vh !important;

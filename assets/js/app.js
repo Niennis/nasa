@@ -5,10 +5,7 @@ window.onload = function () {
   $('#askNews').click(getNews);
 
   let navImages = document.getElementById('navImages');
-
-
-};
-
+}
 // -------------------------------Initializes nasaConnection.
 function nasaConnection() {
   this.checkSetup();
@@ -229,7 +226,7 @@ function getNews() {
         // console.log(infoImg);
         if (infoImg === null || infoImg.indexOf('https') < 0) {
           let newDiv = `<div class="row newDiv">
-                        <div class="col-lg-18">
+                        <div class="col-lg-12">
                           <h3 class="titleNews"><a href="${info.url}" class="urlNews">${info.title}</a></h3>
                           <h5 class="descriptioNres">${info.description}</h5>
                           <h6 class="dateNews">Date: ${info.publishedAt}.</h6>        
@@ -308,4 +305,4 @@ let showImages = () => {
 
 };
 navImages.addEventListener('click', showImages);
-// -----------------------------------------------FIN NEWS API
+// -----------------------------------------------FIN NEWS API//

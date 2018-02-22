@@ -5,7 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+<<<<<<< HEAD
   <link rel="shortcut icon" href="assets/img/planet.png" type="image/x-icon">
+=======
+  <link rel="shortcut icon" href="./assets/img/planet.png" type="image/x-icon">
+>>>>>>> 134ccecef0986150c2976258324d3992eb684080
   <title>Document</title>
   <link rel="stylesheet" href="assets/css/main.css">
   <title>Nasa</title>
@@ -50,7 +54,6 @@
     <div class="container">
       <div class="card text-center align-middle">
         <div class="card-header">
-
         </div>
         <div class="card-body">
           <h5 class="card-title">Welcome to NASA</h5>
@@ -58,7 +61,6 @@
           <button id="sign-in" class="btn btn-primary">Sign-in with Google</button>
         </div>
         <div class="card-footer text-muted">
-
         </div>
       </div>
     </div>
@@ -66,35 +68,33 @@
 
   <div class="template" id="template">
 
+ 
+  <section id="newsContainer" class="container"> 
+    <h2>News</h2>
+    <div class="askNav">      
+      <input class="inputWord" type="text" name="" placeholder="Search..." id="searchWord">      
+      <select class="btn" name="sortBy" id="sortBy">
+        <option value="">Relevancy</option>
+        <option value="">Popularity</option>
+        <option value="">Newest</option>
+      </select>      
+      <select class="btn" name="" id="language">Language
+        <option value="en">English</option>
+        <option value="es">Español</option>
+      </select>        
+      <button class="btn btn-primary" id="askNews">Ask for news</button>
+    </div>          
+    <div class="row">
+      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 center" id="news">            
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 center twitter">
+        <a class="twitter-timeline" href="https://twitter.com/NASA?ref_src=twsrc%5Etfw">Tweets by NASA</a> 
+      </div>
+    </div>
+  </section>
 
-    <section id="newsContainer" class="container">
-      <h2>News</h2>
-      <div class="askNav">
-        <input class="inputWord" type="text" name="" placeholder="Search..." id="searchWord">
-        <select class="btn" name="sortBy" id="sortBy">
-          <option value="">Relevancy</option>
-          <option value="">Popularity</option>
-          <option value="">Newest</option>
-        </select>
-        <select class="btn" name="" id="language">Language
-          <option value="en">English</option>
-          <option value="es">Español</option>
-        </select>
-        <button class="btn btn-primary" id="askNews">Ask for news</button>
-      </div>
-      <div class="row">
-        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 center" id="news">
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 center twitter">
-          <a class="twitter-timeline" href="https://twitter.com/NASA?ref_src=twsrc%5Etfw">Tweets by NASA</a>
-        </div>
-      </div>
-    </section>
-  </div>
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
-    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
   <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
   <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>

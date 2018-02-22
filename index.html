@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="shortcut icon" href="assets/img/planet.png" type="image/x-icon">
   <title>Document</title>
   <link rel="stylesheet" href="assets/css/main.css">
   <title>Nasa</title>
@@ -13,29 +14,31 @@
 <body>
 
   <!-- api key nasa 1nI1mQlDm2OITZ2dpRGVvDiIVtYwJOyOFWl6LT0l -->
-   
-  <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+  <nav class="navbar navbar-toggleable-md navbar-light bg-faded fixed-top">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <a class="navbar-brand" href="#">Nasa</a>
-  
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active" id="navImages">
-          <a class="nav-link" href="#">Images<span class="sr-only">(current)</span></a>
+        <li class="nav-item">
+          <a class="nav-link" href="#showTheImages" id="navImages">Images
+            <span class="sr-only">(current)</span>
+          </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">News</a>
+          <a class="nav-link" href="#newsContainer">News</a>
         </li>
       </ul>
       <div id="user-container form-inline my-2 my-lg-0">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active" hidden id="user-pic"></li>
           <li class="nav-item active" hidden id="user-name"></li>
-                
-          <li class="nav-item active">       
-            <button hidden id="sign-out" class="btn btn-outline-success my-2 my-sm-0">
+
+          <li class="nav-item active">
+            <button hidden id="sign-out" class="btn btn-primary my-2 my-sm-0">
               Sign-out
             </button>
           </li>
@@ -47,79 +50,54 @@
     <div class="container">
       <div class="card text-center align-middle">
         <div class="card-header">
-          Featured
+
         </div>
         <div class="card-body">
           <h5 class="card-title">Welcome to NASA</h5>
           <p class="card-text">You need to be logged to view this site.</p>
-          <button  id="sign-in" class="btn btn-primary">Sign-in with Google</button>
+          <button id="sign-in" class="btn btn-primary">Sign-in with Google</button>
         </div>
         <div class="card-footer text-muted">
-          2 days ago
+
         </div>
       </div>
     </div>
   </header>
-  
-  <!--
-  <section id="dailyImgContainer" class="text-center container-fluid" hidden>
-    <div class="row">
-      <div class="col-12">
-        <h1>FOTO DEL DIA</h1>
-      </div>
-    </div>
-  </section>
-  -->
-  <!-- seccion de imagenes -->
-  <section class="container" id="showTheImages">
-    <div class="row">
-      <div class="col col-lg-8">
-        <input type="text" id="searchPlanet">
-        <button class="btn btn-primary" id="btnSearchPlanet">Buscar</button>
-      </div>
-    </div>
-    <div class="row" id="images"></div>
-  </section>
- 
-  <section id="newsContainer" class="container"> 
-    <!-- hidden -->
-    <h2>News</h2>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4 col-xs-12 col-sm-12">
-          <input class="btn" type="text" name="" id="searchWord">
-        </div>
-        <div class="col col-lg-2 offset-lg-2 col-xs-3 col-sm-3">
-          <select class="btn" name="sortBy" id="sortBy">
-            <option class="btn btn-primary" value="">Relevancy</option>
-            <option value="">Popularity</option>
-            <option value="">Newest</option>
-          </select>
-        </div>
-        <div class="col col-lg-2 offset-lg-2 col-xs-3 col-sm-3">
-          <select class="btn" name="" id="language">Language
-            <option value="en">English</option>
-            <option value="es">Español</option>
-          </select>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="news">
-            <!-- <img class="imgNews" src="" alt="">
-            <h3 class="titleNews"><a class="urlNews" href=""></a></h3>
-            <p class="bodyNews"></p>
-            <h5 class="dateNews">Date: </h5>
-            <h5 class="sourceNews"></h5> -->
-        </div>
-      </div>
-    </div>
-  </section>
+
+  <div class="template" id="template">
 
 
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <section id="newsContainer" class="container">
+      <h2>News</h2>
+      <div class="askNav">
+        <input class="inputWord" type="text" name="" placeholder="Search..." id="searchWord">
+        <select class="btn" name="sortBy" id="sortBy">
+          <option value="">Relevancy</option>
+          <option value="">Popularity</option>
+          <option value="">Newest</option>
+        </select>
+        <select class="btn" name="" id="language">Language
+          <option value="en">English</option>
+          <option value="es">Español</option>
+        </select>
+        <button class="btn btn-primary" id="askNews">Ask for news</button>
+      </div>
+      <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 center" id="news">
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 center twitter">
+          <a class="twitter-timeline" href="https://twitter.com/NASA?ref_src=twsrc%5Etfw">Tweets by NASA</a>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+    crossorigin="anonymous"></script>
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
   <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js">   </script>
+  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
   <script src="/__/firebase/init.js"></script>
   <script src="./assets/js/app.js"></script>
 </body>

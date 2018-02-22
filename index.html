@@ -22,7 +22,7 @@
   
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
+        <li class="nav-item active" id="navImages">
           <a class="nav-link" href="#">Images<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
@@ -61,7 +61,7 @@
     </div>
   </header>
   
-  </--
+  <!--
   <section id="dailyImgContainer" class="text-center container-fluid" hidden>
     <div class="row">
       <div class="col-12">
@@ -70,15 +70,16 @@
     </div>
   </section>
   -->
-  
-  <div class="container" id="showTheImages">
+  <!-- seccion de imagenes -->
+  <section class="container" id="showTheImages">
     <div class="row">
-      <div class="col-lg-8">
+      <div class="col col-lg-8">
         <input type="text" id="searchPlanet">
         <button class="btn btn-primary" id="btnSearchPlanet">Buscar</button>
       </div>
     </div>
-  </div>
+    <div class="row" id="images"></div>
+  </section>
  
   <section id="newsContainer" class="container"> 
     <!-- hidden -->

@@ -113,7 +113,7 @@ window.onload = function() {
 let btnSearchPlanet = document.getElementById('btnSearchPlanet');
 
 function showApiNAsa() {
-  $('#bla').empty();
+  $('#images').empty();
   let searchPlanet = document.getElementById('searchPlanet').value;
   fetch(`https://images-api.nasa.gov/search?q=${searchPlanet}`, {
     method: 'get'
@@ -126,15 +126,15 @@ function showApiNAsa() {
         images.filter(element => {
           let imageHref = element.links[0].href;
           let description = element.data[0].description_508;
-          $('#showTheImages').append(`<div class="col-lg-4" id="bla">
-          <div class="thumbnail" >
+          $('#images').append(`<div class="col col-lg-4" >
+          <div class="img-thumbnail" >
             <a href="#">
             <img src="${imageHref}" alt="planets" class="imgSearch">
             <div class="caption">
             <p>${description}</p>
             </div>
             </a>
-          </div>
+            </div>
           </div>`);
         });
       });

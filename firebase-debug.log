@@ -1,0 +1,32 @@
+[debug] [2018-02-22T11:52:06.263Z] ----------------------------------------------------------------------
+[debug] [2018-02-22T11:52:06.265Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve
+[debug] [2018-02-22T11:52:06.266Z] CLI Version:   3.17.4
+[debug] [2018-02-22T11:52:06.266Z] Platform:      linux
+[debug] [2018-02-22T11:52:06.266Z] Node Version:  v9.5.0
+[debug] [2018-02-22T11:52:06.266Z] Time:          Thu Feb 22 2018 08:52:06 GMT-0300 (CLST)
+[debug] [2018-02-22T11:52:06.266Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-02-22T11:52:06.278Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-02-22T11:52:06.278Z] > authorizing via signed-in user
+[debug] [2018-02-22T11:52:06.280Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/nasa-project-nienna  
+  
+ Thu Feb 22 2018 08:52:06 GMT-0300 (CLST)
+[debug] [2018-02-22T11:52:07.533Z] <<< HTTP RESPONSE 200
+[debug] [2018-02-22T11:52:07.535Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/nasa-project-nienna/tokens  
+  
+ Thu Feb 22 2018 08:52:07 GMT-0300 (CLST)
+[debug] [2018-02-22T11:52:08.341Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/home/laboratoria/Nienna/front_end/02_spa/06_reto_nasa'...
+[info] 
+[debug] [2018-02-22T11:52:08.346Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/nasa-project-nienna  
+  
+ Thu Feb 22 2018 08:52:08 GMT-0300 (CLST)
+[debug] [2018-02-22T11:52:09.440Z] <<< HTTP RESPONSE 200
+[debug] [2018-02-22T11:52:09.441Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/962497230993/clients/_:getWebAppConfig  
+  
+ Thu Feb 22 2018 08:52:09 GMT-0300 (CLST)
+[debug] [2018-02-22T11:52:10.258Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: ./
+[info] ✔  hosting: Local server: http://localhost:5000
+

@@ -69,7 +69,7 @@ nasaConnection.prototype.onAuthStateChanged = function (user) {
     // Hide sign-in button.
     this.signInContainer.setAttribute('hidden', 'true');
     // this.newsContainer.removeAttribute('hidden');
-    this.showTheImages.removeAttribute('hidden');
+    // this.showTheImages.removeAttribute('hidden');
   } else {// User is signed out!
     // Hide user's profile and sign-out button.
     this.userName.setAttribute('hidden', 'true');
@@ -108,14 +108,7 @@ nasaConnection.prototype.checkSetup = function () {
   }
 };
 
-// buscar por https://nasa-project-nienna.firebaseapp.com
-// url (requerida), opciones (opcional) SBmiPgE8WXMZztwJFFZhKpAb5CyIKhGr8kUTD5zz   https://api.nasa.gov/EPIC/api/natural/images?api_key=DEMO_KEY 
-
-
-
-function showApiNAsa() {
-  $('#bla').empty();
-  
+function showApiNAsa() {  
   let searchPlanet = document.getElementById('searchPlanet').value;
   fetch(`https://images-api.nasa.gov/search?q=${searchPlanet}`, {
     method: 'get'
@@ -143,7 +136,7 @@ function showApiNAsa() {
 
         });
       });
-  }).catch(function (err) {
+  }).catch(function(err) {
     console.log('Error');
   });
 }
@@ -160,11 +153,11 @@ function loadNews() {
   let askNews = document.getElementById('askNews');
 
   fetch(`https://newsapi.org/v2/everything?apiKey=19214f11097341d1ad450bb2ad214ce1&q=nasa%20science&language=${language}&sortBy${sortBy}`)
-    .then(function (response) {
+    .then(function(response) {
       // Turns the the JSON into a JS object
       return response.json();
     })
-    .then(function (data) {
+    .then(function(data) {
       console.log(data);
       console.log(data.articles[1]);
       for (let i = 0; i < data.articles.length; i++) {
@@ -218,13 +211,12 @@ function getNews() {
   let news = document.getElementById('news');
   let askNews = document.getElementById('askNews');
 
-  // fetch('https://newsapi.org/v2/top-headlines?apiKey=19214f11097341d1ad450bb2ad214ce1&country=us&category=science&q=nasa')
   fetch(`https://newsapi.org/v2/everything?apiKey=19214f11097341d1ad450bb2ad214ce1&q=nasa%20science%20${searchWord}&language=${language}&sortBy${sortBy}`)
-    .then(function (response) {
+    .then(function(response) {
       // Turns the the JSON into a JS object
       return response.json();
     })
-    .then(function (data) {
+    .then(function(data) {
       // console.log(data);
       // console.log(data.articles[1]);
       for (let i = 0; i < data.articles.length; i++) {
@@ -293,8 +285,8 @@ function getNews() {
   });
 })();
 // searching images
-let showImages = () => {
-  $('#template').empty();
+let showImages = function() {
+  $('#template').empty();  
   $('#template').append(`<section class="container" id="showTheImages">
                     <div class="row">
                     <div class="col col-lg-12">
@@ -309,17 +301,16 @@ let showImages = () => {
                     </section>`);
 
   $('#btnSearchPlanet').click(showApiNAsa);
-
 };
 navImages.addEventListener('click', showImages);
 // -----------------------------------------------FIN NEWS API//
 
-$('#toImages').click(function() {
-  $('#newsContainer').attr('hidden', true);
-  $('#showTheImages').removeAttr('hidden');
-});
+// $('#toImages').click(function() {
+//   $('#newsContainer').attr('hidden', true);
+//   $('#showTheImages').removeAttr('hidden');
+// });
 
-$('#toNews').click(function() {
-  $('#showTheImages').attr('hidden', true);
-  $('#newsContainer').removeAttr('hidden');
-});
+// $('#toNews').click(function() {
+//   $('#showTheImages').attr('hidden', true);
+//   $('#newsContainer').removeAttr('hidden');
+// });

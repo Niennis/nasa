@@ -24,7 +24,7 @@ body {
   padding: 1vh;
 }
 .navbar-light .navbar-brand, li a{
-  color: red !important;
+  color: white !important;
 }
 .navbar-light .navbar-brand:hover, li a:hover{
   background-color: #301472;
@@ -55,6 +55,10 @@ body {
 /* ----------------------------INICIO HEADER ----*/
 header{
   height: 100%;
+  position: absolute;
+  z-index: 9999;
+  top: 17%;
+  left: 14%;
 }
 .card{
   border: #301472;
@@ -119,7 +123,12 @@ header{
 .twitter iframe{
   margin-top: 10vh !important;
 }
-
+#sortBy, #language{
+  color: white;
+}
+#sortBy option:hover, #language option:hover{
+  background-color: #301472;
+}
 /* ------------------------------- FIN NEWS ----*/
 
 /*************************************IMAGES*********/

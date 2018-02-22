@@ -15,8 +15,7 @@ function nasaConnection() {
   this.signOutButton = document.getElementById('sign-out');
   this.signInSnackbar = document.getElementById('must-signin');
   this.signInContainer = document.getElementById('signInContainer');
-  this.dailyImgContainer = document.getElementById('dailyImgContainer');
-
+  this.showTheImages = document.getElementById('showTheImages');
   this.newsContainer = document.getElementById('newsContainer');
 
   this.signOutButton.addEventListener('click', this.signOut.bind(this));
@@ -69,9 +68,9 @@ nasaConnection.prototype.onAuthStateChanged = function (user) {
 
     // Hide sign-in button.
     this.signInContainer.setAttribute('hidden', 'true');
-    // this.dailyImgContainer.removeAttribute('hidden');
-    this.newsContainer.removeAttribute('hidden');
-  } else { // User is signed out!
+    // this.newsContainer.removeAttribute('hidden');
+    this.showTheImages.removeAttribute('hidden');
+  } else {// User is signed out!
     // Hide user's profile and sign-out button.
     this.userName.setAttribute('hidden', 'true');
     this.userPic.setAttribute('hidden', 'true');
@@ -79,7 +78,7 @@ nasaConnection.prototype.onAuthStateChanged = function (user) {
 
     // Show sign-in button.
     this.signInContainer.removeAttribute('hidden');
-    // this.dailyImgContainer.setAttribute('hidden', 'true');
+    this.showTheImages.setAttribute('hidden', 'true');
     this.newsContainer.setAttribute('hidden', 'true');
   }
 };
@@ -115,7 +114,8 @@ nasaConnection.prototype.checkSetup = function () {
 
 
 function showApiNAsa() {
-  $('#images').empty();
+  $('#bla').empty();
+  
   let searchPlanet = document.getElementById('searchPlanet').value;
   fetch(`https://images-api.nasa.gov/search?q=${searchPlanet}`, {
     method: 'get'
@@ -128,7 +128,6 @@ function showApiNAsa() {
         images.filter(element => {
           let imageHref = element.links[0].href;
           let description = element.data[0].description_508;
-
           if (imageHref !== undefined && description !== undefined) {
             $('#images').append(`<div class="col col-lg-4" >
             <div class="img-thumbnail imgdiv" >
@@ -145,20 +144,21 @@ function showApiNAsa() {
         });
       });
   }).catch(function (err) {
-    // Error :(
-  });//https://api.nasa.gov/planetary/earth/assets?lon=100.75&lat=1.5&begin=2014-02-01&api_key=DEMO_KEY
-}//https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=DEMO_KEY
+    console.log('Error');
+  });
+}
 
 // ------------------------------------------- NEWS API------
+let toNews = document.getElementById('toNews');
 
 function loadNews() {
+  $('#news').empty();
   let searchWord = document.getElementById('searchWord').value;
   let sortBy = document.getElementById('sortBy').value;
   let language = document.getElementById('language').value;
   let news = document.getElementById('news');
   let askNews = document.getElementById('askNews');
 
-  // fetch('https://newsapi.org/v2/top-headlines?apiKey=19214f11097341d1ad450bb2ad214ce1&country=us&category=science&q=nasa')
   fetch(`https://newsapi.org/v2/everything?apiKey=19214f11097341d1ad450bb2ad214ce1&q=nasa%20science&language=${language}&sortBy${sortBy}`)
     .then(function (response) {
       // Turns the the JSON into a JS object
@@ -200,10 +200,17 @@ function loadNews() {
       console.log('Something not found');
     });
 }
-loadNews();
+
+//  FUNCION PARA CARGAR NOTICIAS DESDE LA NAVBAR 
+
+$('#toNews').click(function() {
+  let newsContainer = document.getElementById('newsContainer');
+  newsContainer.removeAttribute('hidden');  
+  loadNews();
+});
+
 
 function getNews() {
-  console.log('whaaaaat');
   $('#news').empty();
   let searchWord = document.getElementById('searchWord').value;
   let sortBy = document.getElementById('sortBy').value;
@@ -306,3 +313,13 @@ let showImages = () => {
 };
 navImages.addEventListener('click', showImages);
 // -----------------------------------------------FIN NEWS API//
+
+$('#toImages').click(function() {
+  $('#newsContainer').attr('hidden', true);
+  $('#showTheImages').removeAttr('hidden');
+});
+
+$('#toNews').click(function() {
+  $('#showTheImages').attr('hidden', true);
+  $('#newsContainer').removeAttr('hidden');
+});

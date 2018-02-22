@@ -5,14 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
-<<<<<<< HEAD
-  <link rel="shortcut icon" href="assets/img/planet.png" type="image/x-icon">
-=======
   <link rel="shortcut icon" href="./assets/img/planet.png" type="image/x-icon">
->>>>>>> 134ccecef0986150c2976258324d3992eb684080
-  <title>Document</title>
+  <title>NasaNews</title>
   <link rel="stylesheet" href="assets/css/main.css">
-  <title>Nasa</title>
 </head>
 
 <body>
@@ -33,7 +28,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#newsContainer">News</a>
+          <a class="nav-link" href="#newsContainer" id="toNews">News</a>
         </li>
       </ul>
       <div id="user-container form-inline my-2 my-lg-0">
@@ -68,8 +63,7 @@
 
   <div class="template" id="template">
 
- 
-  <section id="newsContainer" class="container"> 
+  <section id="newsContainer" class="container" hidden> 
     <h2>News</h2>
     <div class="askNav">      
       <input class="inputWord" type="text" name="" placeholder="Search..." id="searchWord">      
@@ -88,7 +82,7 @@
       <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 center" id="news">            
       </div>
       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 center twitter">
-        <a class="twitter-timeline" href="https://twitter.com/NASA?ref_src=twsrc%5Etfw">Tweets by NASA</a> 
+        <a class="twitter-timeline" id="nasaTwitter" href="https://twitter.com/NASA?ref_src=twsrc%5Etfw">Tweets by NASA</a> 
       </div>
     </div>
   </section>

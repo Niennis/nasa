@@ -24,7 +24,7 @@ body {
   padding: 1vh;
 }
 .navbar-light .navbar-brand, li a{
-  color: white !important;
+  color: red !important;
 }
 .navbar-light .navbar-brand:hover, li a:hover{
   background-color: #301472;

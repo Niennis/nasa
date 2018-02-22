@@ -121,3 +121,25 @@ header{
 }
 
 /* ------------------------------- FIN NEWS ----*/
+
+/*************************************IMAGES*********/
+.caption{
+  padding: 1em;
+  color: black;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.1;
+}
+.imgdiv{
+  margin-top: 1em
+}
+.title2, .titleday{
+  color: #1da7a7;
+}
+#searchPlanet{
+  width: 60%;
+  display: inline-block
+}
+.imgDay{
+  display: block;
+}

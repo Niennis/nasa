@@ -8,22 +8,24 @@
   <link rel="shortcut icon" href="./assets/img/planet.png" type="image/x-icon">
   <title>NasaNews</title>
   <link rel="stylesheet" href="assets/css/main.css">
-  <title>Nasa</title>
 </head>
 
 <body>
 
   <!-- api key nasa 1nI1mQlDm2OITZ2dpRGVvDiIVtYwJOyOFWl6LT0l -->
-   
+
   <nav class="navbar navbar-toggleable-md navbar-light bg-faded fixed-top">
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand" href="#">Nasa</a>  
+    <a class="navbar-brand" href="#">Nasa</a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#showTheImages">Images<span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="#showTheImages" id="navImages">Images
+            <span class="sr-only">(current)</span>
+          </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#newsContainer" id="toNews">News</a>
@@ -33,8 +35,8 @@
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active" hidden id="user-pic"></li>
           <li class="nav-item active" hidden id="user-name"></li>
-                
-          <li class="nav-item active">       
+
+          <li class="nav-item active">
             <button hidden id="sign-out" class="btn btn-primary my-2 my-sm-0">
               Sign-out
             </button>
@@ -47,40 +49,20 @@
     <div class="container">
       <div class="card text-center align-middle">
         <div class="card-header">
-          
         </div>
         <div class="card-body">
           <h5 class="card-title">Welcome to NASA</h5>
           <p class="card-text">You need to be logged to view this site.</p>
-          <button  id="sign-in" class="btn btn-primary">Sign-in with Google</button>
+          <button id="sign-in" class="btn btn-primary">Sign-in with Google</button>
         </div>
         <div class="card-footer text-muted">
-          
         </div>
       </div>
     </div>
   </header>
-  
-  <!--
-  <section id="dailyImgContainer" class="text-center container-fluid" hidden>
-    <div class="row">
-      <div class="col-12">
-        <h1>FOTO DEL DIA</h1>
-      </div>
-    </div>
-  </section>
-  -->
-  <!-- seccion de imagenes -->
-  <section class="container" id="showTheImages">
-    <div class="row">
-      <div class="col col-lg-8">
-        <input type="text" id="searchPlanet">
-        <button class="btn btn-primary" id="btnSearchPlanet">Buscar</button>
-      </div>
-    </div>
-    <div class="row" id="images"></div>
-  </section>
- 
+
+  <div class="template" id="template">
+
   <section id="newsContainer" class="container" hidden> 
     <h2>News</h2>
     <div class="askNav">      
